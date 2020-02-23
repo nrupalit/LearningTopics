@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDN of react</title>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    
+</head>
+<body>
+    <div id="app"></div>
+
+    <!-- React Apllication -->
+    <script type="text/babel">
+        class App extends React.Component {
+            state = {
+                welcome: 'Welcome to React',
+                hoverButton: null
+            }
+            handleClick = () => {
+                alert(this.state.welcome)
+            }
+            handleMouseOver = (e) => {
+                // document.write(e.pageX);
+                this.setState({hoverButton : e.pageX})
+            }
+            handleCopy = (e) => {
+                console.log("hey");
+            }
+            render(){
+                return(
+                    <div>
+                        <h1>{ this.state.welcome }</h1>
+                        {/* <p>{ Math.random() * 10 }</p> */}
+                        <button onClick= {this.handleClick}>Click Me!</button><br /><br />
+                        <div onMouseOver= {this.handleMouseOver}>Hover Me!</div>
+                        { this.state.hoverButton }
+                        <p onCopy = { this.handleCopy }>The basics should be clear</p>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<App />, document.getElementById('app'));
+    </script>
+</body>
+</html>
